@@ -1,86 +1,152 @@
+/* All pages universal styles */
 body {
     font-family: 'Roboto', sans-serif;
-  }
-  
+    background-color: #f8f9fa;  /* light background color for better readability */
+}
+
+/* Home Page Styles */
 .home-title {
     text-align: center;
+    margin-top: 20px;
 }
 
 .home-icon {
     display: block;
-    margin: 0 auto;
-    max-width: 100%; 
-}
-
-.container-for-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 20px auto 10px; /* Center icon and add spacing */
+    width: 80px; /* Fixed width for consistency */
 }
 
 .home-details {
-    color: grey;      
-    text-align: center; 
-}
-
-.safety-lesson {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.lesson-title, .lesson-text, .quiz-section {
-    width: 100%;
-}
-
-/* Additional styles for the quiz form and navigation buttons */
-.quiz-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.quiz-form button, .navigation-buttons a {
-    margin-top: 10px; /* Space above the buttons */
-}
-
-.navigation-buttons {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.navigation-buttons a {
-    margin: 0 10px; /* Spacing between buttons */
-}
-
-.draggable-items {
+    color: #6c757d; /* Bootstrap's default gray */
     text-align: center;
     margin-bottom: 20px;
 }
 
+/* Safety Page Specific Styles */
+.safety-lesson {
+    text-align: center;
+}
+
+.content.center {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.lesson-title {
+    margin-top: 20px;
+}
+
+.lesson-text, .quiz-section {
+    margin-top: 20px;
+}
+
+/* Media styles */
+.horizontal-media, .lesson-video {
+    width: 100%; /* Full width of the container */
+    height: 500px; /* Fixed height for uniform appearance */
+}
+
+.horizontal-media img, .lesson-video iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the div without distorting aspect ratio */
+}
+
+.vertical-media {
+    width: 50%; /* Half the width of the container to maintain a vertical look */
+    height: 500px; /* Taller height for vertical media */
+    margin: auto; /* Centering the media */
+}
+
+.vertical-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.square-media {
+    width: 300px;  /* Fixed width for square aspect ratio */
+    height: 300px;  /* Equal width and height for a square */
+    margin: auto;  /* Center the square image */
+}
+
+.square-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Quiz Form Styles */
+.quiz-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ensures form takes full width for consistent alignment */
+}
+
+.form-check {
+    margin: 5px auto; /* Automatically centers the check within the form */
+    width: fit-content; /* Shrinks wrap to the size of its contents */
+}
+
+.form-check-input {
+    margin-right: 10px; /* Ensures space between the checkbox and label */
+}
+
+.quiz-question {
+    margin-bottom: 20px; /* Adds some space between question and options */
+}
+
+.quiz-form button {
+    margin-top: 20px;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between; /* Spread apart back and next buttons */
+    margin-top: 20px;
+}
+
+.navigation-buttons a {
+    padding: 10px 20px; /* Larger click area */
+    color: #fff; /* White text */
+    background-color: #007bff; /* Bootstrap primary color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline */
+}
+
+.navigation-buttons a:hover {
+    background-color: #0056b3; /* Darker on hover */
+}
+
+/* Drag and Drop Quiz Styles */
 .drag-item {
-    margin: 0 10px;
+    margin: 5px;
     cursor: grab;
+    padding: 10px;
+    border: 1px solid #007bff; /* Primary color border */
+    border-radius: 5px;
 }
 
 .drop-zone {
     display: flex;
     justify-content: space-around;
-    align-items: center;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #e9ecef; /* Light background for the drop zone */
+    border-radius: 5px;
 }
 
 .drop-placeholder {
-    border: 2px dashed #ccc;
-    height: 50px; /* Make sure this is tall enough */
-    line-height: 50px;
-    width: 150px; /* And wide enough */
-    margin: 10px;
+    width: 300px;
+    height: 100px;
+    line-height: 40px;
+    border: 2px dashed #007bff;
+    margin: 0 10px;
     text-align: center;
-    display: inline-block; /* or flex */
-    justify-content: center;
-    align-items: center;
+    color: #6c757d;
+    background-color: #f8f9fa; /* Slight highlight on hover */
 }

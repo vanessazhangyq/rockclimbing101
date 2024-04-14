@@ -10,7 +10,8 @@ lessons = {
     "1": {
         "lesson_id": "1",
         "title": "How to safety fall in bouldering",
-        "media": "https://www.climbingfacts.com/wp-content/uploads/2022/09/how-to-fall-while-bouldering.jpg",
+        "media": "http://valcursus.nl/media/posts/8/responsive/poster-md.png",
+        "media_type": "vertical",
         "text": "To safely fall, you want to fall on your feet with knees bent (squat position) and engage the Tuck and Roll technique. The Tuck & Roll technique implies that you TUCK your arms as you jump down and ROLL backward to break the fall. Tucking your arms prevents you from landing on and potentially breaking your arms and rolling over takes pressure away from the knees.",
         "previous_lesson": "home",
         "next_lesson": "2"
@@ -27,6 +28,7 @@ lessons = {
         "lesson_id": "3",
         "title": "Step 1: T-rex",
         "media": "https://ih1.redbubble.net/image.852291934.8842/flat,750x,075,f-pad,750x1000,f8f8f8.u3.jpg",
+        "media_type": "vertical",
         "text": "Just like a T-rex dinosaur\nLand on your feet with bent knees\nTuck your arms inside",
         "previous_lesson": "2",
         "next_lesson": "4"
@@ -35,6 +37,7 @@ lessons = {
         "lesson_id": "4",
         "title": "Step 2: Turtle",
         "media": "https://png.pngtree.com/png-clipart/20230813/original/pngtree-funny-tortoise-turtle-walking-climbing-rock-exotic-reptile-cartoon-picture-image_7909655.png",
+        "media_type": "horizontal",
         "text": "Put chin on chest to avoid head injuries",
         "previous_lesson": "3",
         "next_lesson": "5" 
@@ -43,6 +46,7 @@ lessons = {
         "lesson_id": "5",
         "title": "Step 3: Roll",
         "media": "https://lh5.googleusercontent.com/proxy/MMyexNOu5E33wBjlzTkYGN9gDO29L6C8_No7PbdWkyVjzCMza4Aw51GsamHnQsDLM0FueiA5g-5HPWBfl1qUg72vBA",
+        "media_type": "vertical",
         "text": "Roll backbacks. Don't lean forward otherwise your face will hit the wall.",
         "previous_lesson": "4",
         "next_lesson": "6" 
@@ -66,13 +70,13 @@ lessons = {
     "8": {
     "lesson_id": "8",
     "title": "Congratulations!",
-    "media": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVjjZ0ChRR_7dloFgZ-flQWHtiPiaAM9j1tA&s", 
+    "media": "https://em-content.zobj.net/source/skype/289/party-popper_1f389.png", 
+    "media_type": "square",
     "text": "You finished the Safety section! Please click next to learn about different climbing types!",
     "previous_lesson": "7",
     "next_lesson": "climbing_types/1"
     }
 }
-
 
 climbing_types_lessons = {
     "1": {
