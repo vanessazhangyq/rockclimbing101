@@ -1,0 +1,50 @@
+.home-title {
+    text-align: center;
+}
+
+.home-icon {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; 
+}
+
+.container-for-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-details {
+    color: grey;      
+    text-align: center; 
+}
+
+.draggable-items {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.drag-item {
+    margin: 0 10px;
+    cursor: grab;
+}
+
+.drop-zone {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.drop-placeholder {
+    border: 2px dashed #ccc;
+    height: 50px; /* Make sure this is tall enough */
+    line-height: 50px;
+    width: 150px; /* And wide enough */
+    margin: 10px;
+    text-align: center;
+    display: inline-block; /* or flex */
+    justify-content: center;
+    align-items: center;
+}

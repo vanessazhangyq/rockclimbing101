@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="climbing-types-lesson">
+    <h1 class="lesson-title">{{ lesson.title }}</h1>
+    
+    <!-- Display the lesson's media -->
+    <div class="lesson-media">
+        <img src="{{ lesson.media }}" alt="Illustration of Climbing Types" class="img-fluid">
+    </div>
+
+    <!-- Display the lesson's text -->
+    <div class="lesson-text">
+        <p>{{ lesson.text }}</p>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="navigation-buttons">
+        <a href="{{ url_for('safety', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
+        <a href="{{ url_for('climbing_types', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
+    </div>
+</div>
+{% endblock %}
