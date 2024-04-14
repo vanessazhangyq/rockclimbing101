@@ -2,76 +2,80 @@
 
 {% block content %}
 <div class="safety-lesson">
-    <h1 class="lesson-title">{{ lesson.title }}</h1>
-    
-    <!-- Display the lesson's media or video -->
-    {% if lesson.media %}
-        <div class="lesson-media">
-            <img src="{{ lesson.media }}" alt="Illustration of how to fall safely while bouldering" class="img-fluid">
-        </div>
-    {% elif lesson.video %}
-        <div class="lesson-video">
-            <iframe src="{{ lesson.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="img-fluid"></iframe>
-        </div>
-    {% endif %}
-
-    <!-- Quiz Section -->
-    {% if lesson.question %}
-        <div class="quiz-section">
-            <p class="quiz-question">{{ lesson.question }}</p>
-            <!-- Update the form action to point to the submit_quiz route with the correct lesson_id -->
-            <form class="quiz-form" action="{{ url_for('submit_quiz', lesson_id=lesson.lesson_id) }}" method="POST">
-                {% for option in lesson.options %}
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="quizAnswer" id="answer{{ loop.index }}" value="{{ option }}">
-                        <label class="form-check-label" for="answer{{ loop.index }}">
-                            {{ option }}
-                        </label>
-                    </div>
-                {% endfor %}
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    {% endif %}
-
-    {% if lesson.lesson_id == '7' %}
-        <div class="quiz-section">
-            <!-- The drop-zone and draggable items -->
-            <div id="drop-zone" class="drop-zone">
-                <div class="drop-placeholder" data-step="1">Step 1</div>
-                <div class="drop-placeholder" data-step="2">Step 2</div>
-                <div class="drop-placeholder" data-step="3">Step 3</div>
+    <div class ="content center"> 
+        <h1 class="lesson-title">{{ lesson.title }}</h1>
+        
+        <!-- Display the lesson's media or video -->
+        {% if lesson.media %}
+            <div class="lesson-media">
+                <img src="{{ lesson.media }}" alt="Illustration of how to fall safely while bouldering" class="img-fluid">
             </div>
-
-            <div id="draggable-items" class="draggable-items">
-                {% for item in lesson.steps %}
-                    <div draggable="true" class="drag-item btn btn-outline-primary" id="drag-{{ item|lower }}">{{ item }}</div>
-                {% endfor %}
+        {% elif lesson.video %}
+            <div class="lesson-video">
+                <iframe src="{{ lesson.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="img-fluid"></iframe>
             </div>
+        {% endif %}
 
-            <!-- The form to submit the results of the quiz -->
-            <form id="quiz-form" class="quiz-form" method="POST" action="{{ url_for('submit_drag_and_drop_quiz') }}">
-                <input type="hidden" name="step1" id="step1" value="">
-                <input type="hidden" name="step2" id="step2" value="">
-                <input type="hidden" name="step3" id="step3" value="">
-                
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+        <!-- Quiz Section -->
+        {% if lesson.question %}
+            <div class="quiz-section">
+                <p class="quiz-question">{{ lesson.question }}</p>
+                <!-- Update the form action to point to the submit_quiz route with the correct lesson_id -->
+                <form class="quiz-form" action="{{ url_for('submit_quiz', lesson_id=lesson.lesson_id) }}" method="POST">
+                    {% for option in lesson.options %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="quizAnswer" id="answer{{ loop.index }}" value="{{ option }}">
+                            <label class="form-check-label" for="answer{{ loop.index }}">
+                                {{ option }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        {% endif %}
+
+        {% if lesson.lesson_id == '7' %}
+            <div class="quiz-section">
+                <!-- The drop-zone and draggable items -->
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-placeholder" data-step="1">Step 1</div>
+                    <div class="drop-placeholder" data-step="2">Step 2</div>
+                    <div class="drop-placeholder" data-step="3">Step 3</div>
+                </div>
+
+                <div id="draggable-items" class="draggable-items">
+                    {% for item in lesson.steps %}
+                        <div draggable="true" class="drag-item btn btn-outline-primary" id="drag-{{ item|lower }}">{{ item }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- The form to submit the results of the quiz -->
+                <form id="quiz-form" class="quiz-form" method="POST" action="{{ url_for('submit_drag_and_drop_quiz') }}">
+                    <input type="hidden" name="step1" id="step1" value="">
+                    <input type="hidden" name="step2" id="step2" value="">
+                    <input type="hidden" name="step3" id="step3" value="">
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        {% endif %}
+
+        <!-- Display the lesson's text -->
+        <div class="lesson-text">
+            <p>{{ lesson.text }}</p>
         </div>
-    {% endif %}
 
-    <!-- Display the lesson's text -->
-    <div class="lesson-text">
-        <p>{{ lesson.text }}</p>
+        <!-- Navigation for next/back lesson -->
+        <div class="navigation-buttons">
+            {% if previous_lesson_url %}
+                <a href="{{ previous_lesson_url }}" class="btn btn-secondary">Back</a>
+            {% endif %}
+        
+            {% if next_lesson_url %}
+                <a href="{{ next_lesson_url }}" class="btn btn-primary">Next</a>
+            {% endif %}
+        </div>
     </div>
-
-    <!-- Navigation for next/back lesson -->
-    {% if previous_lesson_url %}
-        <a href="{{ previous_lesson_url }}" class="btn btn-secondary">Back</a>
-    {% endif %}
-
-    {% if next_lesson_url %}
-        <a href="{{ next_lesson_url }}" class="btn btn-primary">Next</a>
-    {% endif %}
 </div>
 {% endblock %}

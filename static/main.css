@@ -23,6 +23,38 @@ body {
     text-align: center; 
 }
 
+.safety-lesson {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.lesson-title, .lesson-text, .quiz-section {
+    width: 100%;
+}
+
+/* Additional styles for the quiz form and navigation buttons */
+.quiz-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quiz-form button, .navigation-buttons a {
+    margin-top: 10px; /* Space above the buttons */
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navigation-buttons a {
+    margin: 0 10px; /* Spacing between buttons */
+}
+
 .draggable-items {
     text-align: center;
     margin-bottom: 20px;
