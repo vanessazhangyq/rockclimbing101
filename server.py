@@ -90,13 +90,66 @@ climbing_types_lessons = {
     "2": {
         "lesson_id": "2",
         "title": "Bouldering Techniques",
-        "media": "https://path/to/bouldering-techniques/image.jpg",  # Replace with actual image URL
-        "text": "Learn the basics of bouldering and how to improve your technique.",
+        "media": "https://st.depositphotos.com/1763191/58677/v/450/depositphotos_586773220-stock-illustration-indoor-rock-climbing-gym-illustration.jpg",
+        "text": "The most common climbing in gym.No harness required",
         "previous_lesson": "1", 
         "next_lesson": "3" 
     },
+    "3": {
+        "lesson_id": "3",
+        "title": "Auto-belay",
+        "media": "https://www.wikihow.com/images/thumb/3/36/Belay-Step-21.jpg/v4-460px-Belay-Step-21.jpg.webp", 
+        "text": "There is a auto-belay machine at the top of the wall.Harness required. Don’t need belay partner.",
+        "previous_lesson": "2", 
+        "next_lesson": "4" 
+    },
+    "4": {
+        "lesson_id": "4",
+        "title": "Top rope belay",
+        "media": "https://www.vdiffclimbing.com/wp-content/images/basics/basic-top-rope-belay/take-in-top-rope-belay-2.png", 
+        "text": "There is an anchor at the top. Harness required. Need a belay partner. ",
+        "previous_lesson": "3", 
+        "next_lesson": "5" 
+    },
+    "5": {
+        "lesson_id": "5",
+        "title": "Lead",
+        "media": "https://www.vdiffclimbing.com/wp-content/images/basics/basic-top-rope/top-rope-climbing-1.png", 
+        "text": "Climber has to adjust the rope. Harness required. Need a belay partner.", 
+        "previous_lesson": "4", 
+        "next_lesson": "6" 
+    },
+    "6": {
+        "lesson_id": "6",
+        "title": "Quiz on Climbing Types",
+        "media": "https://www.wikihow.com/images/thumb/3/36/Belay-Step-21.jpg/v4-460px-Belay-Step-21.jpg.webp",
+        "text": "",
+        "question": "Identify the type of climbing shown in the picture.",
+        "options": ["Auto Belay", "Lead", "Bouldering"],
+        "correct_answer": "Auto Belay",
+        "previous_lesson": "5",
+        "next_lesson": "7"
+    },
+    "7": {
+    "lesson_id": "7",
+    "title": "Congratulations!",
+    "media": "https://em-content.zobj.net/source/skype/289/party-popper_1f389.png", 
+    "media_type": "square",
+    "text": "You finished the Climbing Types! Please click next to learn about different climbing types!",
+    "previous_lesson": "6",
+    "next_lesson": "grading_systems/1"
+    }
 }
 
+grading_systems_lessons = {"1": {
+        "lesson_id": "1",
+        "title": "Introduction to Grading Systems",
+        "media": "https://i.pinimg.com/originals/a1/90/89/a1908956ebfbb4b3af9dd74d31f32109.jpg",
+        "text": "Discover the grading system!",
+        "previous_lesson": "8",
+        "next_lesson": "2"
+    }
+}
 
 @app.route('/')
 def home():
@@ -161,21 +214,54 @@ def submit_drag_and_drop_quiz():
     # Re-render the safety.html with the current lesson data
     return redirect(url_for('safety', lesson_id=lesson_id))
 
-
-
 @app.route('/climbing_types')
-def climbing_types_index():  # Changed function name to be unique
+def climbing_types_index():
+    # Redirect to the first lesson of Climbing Types
     return redirect(url_for('climbing_types', lesson_id="1"))
 
 @app.route('/climbing_types/<lesson_id>')
 def climbing_types(lesson_id):
-    lesson = climbing_types_lessons.get(lesson_id, None)
+    lesson = climbing_types_lessons.get(lesson_id)
     if lesson is None:
         return redirect(url_for('home'))
-    previous_lesson = lesson.get('previous_lesson')
-    next_lesson = lesson.get('next_lesson')
-    return render_template('climbing_types.html', lesson=lesson, previous_lesson=previous_lesson, next_lesson=next_lesson)
 
+    # Check if the next lesson is a transition to grading systems
+    if "grading_systems" in lesson['next_lesson']:
+        return redirect(url_for('grading_systems', lesson_id=lesson['next_lesson'].split('/')[-1]))
+
+    return render_template('climbing_types.html', lesson=lesson)
+
+
+@app.route('/climbing_types/<lesson_id>/submit_quiz', methods=['POST'])
+def submit_climbing_quiz(lesson_id):
+    selected_option = request.form['quizAnswer']
+    lesson = climbing_types_lessons.get(lesson_id, {})
+    
+    # Check if the selected answer is correct
+    is_correct = selected_option == lesson.get('correct_answer')
+    
+    if is_correct:
+        flash('Correct answer!', 'success')
+    else:
+        flash('Incorrect answer. Try again.', 'danger')
+    
+    return redirect(url_for('climbing_types', lesson_id=lesson_id))
+
+@app.route('/grading_systems')
+def grading_systems_index():
+    # Redirect to the first lesson of Grading Systems
+    return redirect(url_for('grading_systems', lesson_id="1"))
+
+@app.route('/grading_systems/<lesson_id>')
+def grading_systems(lesson_id):
+    lesson = grading_systems_lessons.get(lesson_id)
+    if lesson is None:
+        return redirect(url_for('home'))
+    return render_template('grading_systems.html', lesson=lesson)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 if __name__ == '__main__':
     app.run(debug = True)
