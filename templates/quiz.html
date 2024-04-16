@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>{{ data.title }}</h2>
+{% if data.media %}
+    <img src="{{ data.media }}" alt="Media related to the question">
+{% endif %}
+<form method="post" action="{{ url_for('quiz', quiz_num=data.next) }}">
+    {% if data.options|length > 0 %}
+        {% if data.quiz_num == '2' %}  <!-- Drag-and-drop question -->
+            <div class="drag-drop-area">
+                <div class="drag-items">
+                    {% for option in data.options %}
+                        <div id="{{ option }}" class="drag-item">{{ option }}</div>
+                    {% endfor %}
+                </div>
+                <div class="drop-areas">
+                    <div data-step="1" class="drop-placeholder">Step 1: <input type="hidden" id="step1"></div>
+                    <div data-step="2" class="drop-placeholder">Step 2: <input type="hidden" id="step2"></div>
+                    <div data-step="3" class="drop-placeholder">Step 3: <input type="hidden" id="step3"></div>
+                </div>
+            </div>
+        {% else %}
+            {% for option in data.options %}
+                <input type="radio" name="answer" value="{{ option }}" id="{{ option }}">
+                <label for="{{ option }}">{{ option }}</label><br>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    <div class="navigation-buttons d-flex justify-content-between mt-4">
+        <a href="{{ url_for('quiz', quiz_num=data.back) }}" class="btn btn-primary">Back</a>
+        <a href="{{ url_for('quiz', quiz_num=data.next) }}" class="btn btn-primary">Next</a>
+    </div>
+</form>
+{% endblock %}

@@ -3,7 +3,6 @@ from flask import render_template
 from flask import Response, request, jsonify, redirect, url_for, flash
 import re
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
 
 
 lessons = {
@@ -151,6 +150,54 @@ grading_systems_lessons = {"1": {
     }
 }
 
+# Hardcoded quiz data
+quiz_data = {
+    "0": {"quiz_num": "0", 
+          "title": "Test your knowledge now! 5 quiz questions in total.", 
+          "media": "/static/images/quiz.png",
+          "options": [], 
+          "correct_answer": "", 
+          "back": "/", 
+          "next": "1"},
+    "1": {"quiz_num": "1", 
+          "title": "1. What’s wrong with this falling?", 
+          "media": "https://youtu.be/vD4jf_iw5Dk?si=kkvJinFtn7Rm3xUH", 
+          "options": ["Fall while spinning can hurt your ankles", "Falling sideways is safe"], 
+          "correct_answer": "Fall while spinning can hurt your ankles", 
+          "back": "0", 
+          "next": "2"},
+    "2": {"quiz_num": "2", 
+          "title": "2. What’s the correct way for falling", 
+          "options": ["Turtle", "T-rex", "Roll"], 
+          "correct_answer": ["T-rex", "Turtle", "Roll"], 
+          "back": "1", 
+          "next": "3"},
+    "3": {"quiz_num": "3", 
+          "title": "3. You should roll _____ after landing with two feet.", 
+          "options": ["forwards", "backwards"], 
+          "correct_answer": "backwards", 
+          "back": "2", 
+          "next": "4"},
+    "4": {"quiz_num": "4", 
+          "title": "4. What’s the type of climbing on the image?", 
+          "media": "/static/images/bouldering.png", 
+          "options": ["Auto-belay", "Lead", "Bouldering", "Top Rope"], 
+          "correct_answer": "Bouldering", 
+          "back": "3", 
+          "next": "5"},
+    "5": {"quiz_num": "5", 
+          "title": "5. What is the grading system for bouldering?", 
+          "options": ["YDS", "V-Scale"], 
+          "correct_answer": "V-Scale", 
+          "back": "4", 
+          "next": "finish"},
+    "finish": {
+          "title": "Congratulation!", 
+          "media": "/static/images/congratulation.png",
+          "back": "5", 
+          "next": "Result"}
+}
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -258,6 +305,19 @@ def grading_systems(lesson_id):
     if lesson is None:
         return redirect(url_for('home'))
     return render_template('grading_systems.html', lesson=lesson)
+
+
+# Route for handling the quiz page
+@app.route('/quiz')
+def quiz_index():
+    # Redirect to the start page of quiz
+    return redirect(url_for('quiz', quiz_num="0"))
+
+@app.route('/quiz/<quiz_num>', methods=['GET', 'POST'])
+def quiz(quiz_num):
+    quiz_question = quiz_data.get(quiz_num)
+    return render_template('quiz.html', data=quiz_question)
+
 
 
 if __name__ == '__main__':
