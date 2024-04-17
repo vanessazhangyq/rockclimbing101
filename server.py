@@ -47,7 +47,7 @@ lessons = {
         "title": "Step 3: Roll",
         "media": "https://lh5.googleusercontent.com/proxy/MMyexNOu5E33wBjlzTkYGN9gDO29L6C8_No7PbdWkyVjzCMza4Aw51GsamHnQsDLM0FueiA5g-5HPWBfl1qUg72vBA",
         "media_type": "vertical",
-        "text": "Roll backbacks. Don't lean forward otherwise your face will hit the wall.",
+        "text": "Roll back. Don't lean forward otherwise your face will hit the wall.",
         "previous_lesson": "4",
         "next_lesson": "6" 
     },
