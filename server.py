@@ -3,6 +3,7 @@ from flask import render_template
 from flask import Response, request, jsonify, redirect, url_for, flash
 import re
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'
 
 
 lessons = {
