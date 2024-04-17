@@ -312,7 +312,8 @@ def climbing_types(lesson_id):
         return redirect(url_for('home'))
 
     # Check if the next lesson is a transition to grading systems
-    if "grading_systems" in lesson['next_lesson']:
+    # Ensure this check only occurs if there's no more content to be displayed in the current section
+    if "grading_systems" in lesson['next_lesson'] and lesson_id == '8':
         return redirect(url_for('grading_systems', lesson_id=lesson['next_lesson'].split('/')[-1]))
 
     return render_template('climbing_types.html', lesson=lesson)
