@@ -360,12 +360,6 @@ def submit_grading_quiz(lesson_id):
     
     return redirect(url_for('grading_systems', lesson_id=lesson_id))
 
-@app.route('/quiz')
-def quiz(lesson_id):
-    lesson = lesson_id
-
-    return render_template('grading_systems.html', lesson=lesson)
-
 # Route for handling the quiz page
 user_answers = { # store user answers
     1: "",
