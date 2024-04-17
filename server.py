@@ -167,8 +167,8 @@ quiz_data = {
           "next": "2"},
     "2": {"quiz_num": "2", 
           "title": "2. What’s the correct way for falling", 
-          "options": ["Turtle", "T-rex", "Roll"], 
-          "correct_answer": ["T-rex", "Turtle", "Roll"], 
+          "options": ["T-rex, Turtle, Roll", "Roll, T-rex, Turtle"], 
+          "correct_answer": "T-rex, Turtle, Roll", 
           "back": "1", 
           "next": "3"},
     "3": {"quiz_num": "3", 
@@ -194,6 +194,7 @@ quiz_data = {
         "quiz_num": "6", 
           "title": "Congratulation!", 
           "media": "/static/images/congratulation.png",
+          "score": 0,
           "back": "5", 
           "next": "Result"}
 }
@@ -321,17 +322,34 @@ def quiz_index():
     return redirect(url_for('quiz', quiz_num="0"))
 
 @app.route('/quiz/<quiz_num>', methods=['GET', 'POST'])
-def quiz(quiz_num):
-    # if quiz_num == "2":  # The drag-and-drop question
-        
+def quiz(quiz_num):        
     if quiz_num != "0" and quiz_num != "1":
         answer = request.form.get('answer')
-        user_answers[int(quiz_num) - 1] = answer
-        print(user_answers)
-        
+        if not user_answers[int(quiz_num) - 1]:
+            user_answers[int(quiz_num) - 1] = answer
+            print(user_answers)
+
+    if quiz_num == "6":
+        print("calculating score...")
+        correct = 0
+        for question_number, user_answer in user_answers.items():
+            # Convert question_number to string to match quiz_data keys
+            question_key = str(question_number)
+            if question_key in quiz_data and quiz_data[question_key]["correct_answer"] == user_answer:
+                print(question_key)
+                quiz_data[question_key]["correct_answer"]
+                print(user_answer)
+                correct += 1  # Increment score for each correct answer
+        print(correct)
+        message = f"Congratulation! You got {correct} correct out of 5!"
+        quiz_data["6"]["title"] = message
+
     quiz_question = quiz_data.get(quiz_num)
     return render_template('quiz.html', data=quiz_question)
 
+@app.route('/view_result', methods=['GET'])
+def view_result():
+    return render_template('view_result.html', user_answers=user_answers, questions=quiz_data)
 
 
 if __name__ == '__main__':

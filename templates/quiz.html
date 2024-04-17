@@ -7,26 +7,17 @@
 {% endif %}
 <form method="post" action="{{ url_for('quiz', quiz_num=data.next) }}">
     {% if data.options|length > 0 %}
-        {% if data.quiz_num == '2' %}
-            <div class="drag-drop-area">
-                
-            </div>
-        {% else %}
-            {% for option in data.options %}
-                <input type="radio" name="answer" value="{{ option }}" id="{{ option }}">
-                <label for="{{ option }}">{{ option }}</label><br>
-            {% endfor %}
-        {% endif %}
+        {% for option in data.options %}
+            <input type="radio" name="answer" value="{{ option }}" id="{{ option }}">
+            <label for="{{ option }}">{{ option }}</label><br>
+        {% endfor %}
     {% endif %}
     <div class="navigation-buttons d-flex justify-content-between mt-4">
-        <a href="{{ url_for('quiz', quiz_num=data.back) }}" class="btn btn-primary">Back</a>
-        <!-- <button type="button" onclick="location.href='{{ url_for('quiz', quiz_num=data.back) }}'" class="btn btn-primary">Back</button> -->
-        <button type="submit" class="btn btn-primary">Next</button>
+        {% if data.quiz_num == "6" %}
+            <a href="quiz_result" class="btn btn-primary">View Result</a>
+        {% else %}
+            <button type="submit" class="btn btn-primary">Next</button>
+        {% endif %}
     </div>
-    
-    <!-- <div class="navigation-buttons d-flex justify-content-between mt-4">
-        <a href="{{ url_for('quiz', quiz_num=data.back) }}" class="btn btn-primary">Back</a>
-        <a href="{{ url_for('quiz', quiz_num=data.next) }}" class="btn btn-primary">Next</a>
-    </div> -->
 </form>
 {% endblock %}
