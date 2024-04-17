@@ -53,7 +53,7 @@
             <div style="flex-grow: 1;"></div> <!-- This empty div pushes the next button to the right -->
             <!-- Next button, only show if there is no quiz or after the quiz has been displayed -->
             {% if lesson.next_lesson == 'quiz' %}
-                <a href="{{ url_for('quiz', lesson_id='1') }}" class="btn btn-primary">Next</a>
+                <a href="{{ url_for('quiz', quiz_num=0) }}" class="btn btn-primary">Next</a>
             {% else %}
                 <a href="{{ url_for('grading_systems', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
             {% endif %}
