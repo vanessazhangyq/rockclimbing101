@@ -150,9 +150,8 @@ grading_systems_lessons = {"1": {
     }
 }
 
-# Hardcoded quiz data
 quiz_data = {
-    "0": {"quiz_num": "0", 
+    "0": {"quiz_num": "0",  #start
           "title": "Test your knowledge now! 5 quiz questions in total.", 
           "media": "/static/images/quiz.png",
           "options": [], 
@@ -190,8 +189,9 @@ quiz_data = {
           "options": ["YDS", "V-Scale"], 
           "correct_answer": "V-Scale", 
           "back": "4", 
-          "next": "finish"},
-    "finish": {
+          "next": "6"},
+    "6": { #finish
+        "quiz_num": "6", 
           "title": "Congratulation!", 
           "media": "/static/images/congratulation.png",
           "back": "5", 
@@ -308,6 +308,13 @@ def grading_systems(lesson_id):
 
 
 # Route for handling the quiz page
+user_answers = { # store user answers
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+    5: ""
+} 
 @app.route('/quiz')
 def quiz_index():
     # Redirect to the start page of quiz
@@ -315,6 +322,13 @@ def quiz_index():
 
 @app.route('/quiz/<quiz_num>', methods=['GET', 'POST'])
 def quiz(quiz_num):
+    # if quiz_num == "2":  # The drag-and-drop question
+        
+    if quiz_num != "0" and quiz_num != "1":
+        answer = request.form.get('answer')
+        user_answers[int(quiz_num) - 1] = answer
+        print(user_answers)
+        
     quiz_question = quiz_data.get(quiz_num)
     return render_template('quiz.html', data=quiz_question)
 

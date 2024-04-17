@@ -30,3 +30,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.querySelectorAll('.drop-placeholder').forEach(placeholder => {
+    placeholder.addEventListener('drop', e => {
+        e.preventDefault();
+        const id = e.dataTransfer.getData('text/plain');
+        const draggableElement = document.getElementById(id);
+
+        // Ensure only one element in the placeholder
+        if (placeholder.children.length > 1) {
+            placeholder.removeChild(placeholder.children[0]);
+        }
+
+        placeholder.appendChild(draggableElement);
+        
+        // Update the hidden input for the dropped element
+        placeholder.querySelector('input').value = id;
+    });
+});
