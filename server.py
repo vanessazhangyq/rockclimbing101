@@ -140,14 +140,51 @@ climbing_types_lessons = {
     }
 }
 
-grading_systems_lessons = {"1": {
-        "lesson_id": "1",
-        "title": "Introduction to Grading Systems",
-        "media": "https://i.pinimg.com/originals/a1/90/89/a1908956ebfbb4b3af9dd74d31f32109.jpg",
-        "text": "Discover the grading system!",
-        "previous_lesson": "8",
-        "next_lesson": "2"
-    }
+grading_systems_lessons = {
+        "1": {
+            "lesson_id": "1",
+            "title": "Introduction to Grading Systems",
+            "media": "https://i.pinimg.com/originals/a1/90/89/a1908956ebfbb4b3af9dd74d31f32109.jpg",
+            "text": "Discover the grading system!",
+            "previous_lesson": "7",
+            "next_lesson": "2"
+        },
+        "2": {
+            "lesson_id": "2",
+            "title": "V-Scale",
+            "media": "https://i.pinimg.com/736x/5a/82/c1/5a82c17a8be23ffa049327140550ce77.jpg",
+            "text": "V-Scale is the grading system for bouldering in American. As a beginner, start from V0 in gym.",
+            "previous_lesson": "1", 
+            "next_lesson": "3" 
+        },
+        "3": {
+            "lesson_id": "3",
+            "title": "Yosemite Decimal System (YDS)",
+            "media": "https://static.wixstatic.com/media/a015e3_d349bdd9b9b54ae7b61b65f6d19f0b26~mv2.png",
+            "text": "American Grading system for route climbing. In gym, you would typically found routes in 5.6 - 5.13 levels. As a beginner, start from 5.6",
+            "previous_lesson": "2", 
+            "next_lesson": "4",
+        },
+        "4": {
+            "lesson_id": "4",
+            "title": "Quick Check",
+            "media": "",
+            "text": "",
+            "question": "What is the grading system for bouldering in America?",
+            "options": ["V-Scale", "YDS"],
+            "correct_answer": "YDS",
+            "previous_lesson": "3",
+            "next_lesson": "5"
+        },
+        "5": {
+            "lesson_id": "5",
+            "title": "Congratulations!",
+            "media": "https://em-content.zobj.net/source/skype/289/party-popper_1f389.png", 
+            "media_type": "square",
+            "text": "You finished the Grading Systems!",
+            "previous_lesson": "4",
+            "next_lesson": "quiz"
+        }
 }
 
 quiz_data = {
@@ -305,8 +342,29 @@ def grading_systems(lesson_id):
     lesson = grading_systems_lessons.get(lesson_id)
     if lesson is None:
         return redirect(url_for('home'))
+
     return render_template('grading_systems.html', lesson=lesson)
 
+@app.route('/grading_systems/<lesson_id>/submit_quiz', methods=['POST'])
+def submit_grading_quiz(lesson_id):
+    selected_option = request.form['quizAnswer']
+    lesson = grading_systems_lessons.get(lesson_id, {})
+    
+    # Check if the selected answer is correct 
+    is_correct = selected_option == lesson.get('correct_answer')
+    
+    if is_correct:
+        flash('Correct answer!', 'success')
+    else:
+        flash('Incorrect answer. Try again.', 'danger')
+    
+    return redirect(url_for('grading_systems', lesson_id=lesson_id))
+
+@app.route('/quiz')
+def quiz(lesson_id):
+    lesson = lesson_id
+
+    return render_template('grading_systems.html', lesson=lesson)
 
 # Route for handling the quiz page
 user_answers = { # store user answers
