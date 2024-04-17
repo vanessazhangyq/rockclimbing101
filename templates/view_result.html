@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Quiz Results</h2>
+<div class="results">
+    {% for key, result in results.items() %}
+    <div class="card mb-3">
+        <div class="card-header">{{ result.question }}</div>
+        {% if result.media %}
+            {% if "youtu" in result.media %}
+                <iframe class="card-img-top" src="{{ result.media }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% else %}
+                <img src="{{ result.media }}" class="card-img-top" alt="Media">
+            {% endif %}
+        {% endif %}
+        <ul class="list-group list-group-flush">
+            {% for option in result.options %}
+            <li class="list-group-item 
+                {% if option == result.user_answer and result.is_correct %}list-group-item-success
+                {% elif option == result.user_answer %}list-group-item-danger
+                {% elif option == result.correct_answer %}list-group-item-success
+                {% endif %}">
+                {{ option }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+<a href="/quiz" class="btn btn-primary">Retake Quiz</a>
+{% endblock %}

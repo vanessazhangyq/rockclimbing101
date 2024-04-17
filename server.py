@@ -316,9 +316,12 @@ user_answers = { # store user answers
     4: "",
     5: ""
 } 
+
 @app.route('/quiz')
 def quiz_index():
     # Redirect to the start page of quiz
+    if user_answers[5]:
+        return redirect(url_for('view_result'))
     return redirect(url_for('quiz', quiz_num="0"))
 
 @app.route('/quiz/<quiz_num>', methods=['GET', 'POST'])
@@ -347,10 +350,21 @@ def quiz(quiz_num):
     quiz_question = quiz_data.get(quiz_num)
     return render_template('quiz.html', data=quiz_question)
 
+results = {}
 @app.route('/view_result', methods=['GET'])
 def view_result():
-    return render_template('view_result.html', user_answers=user_answers, questions=quiz_data)
-
+    for key, value in user_answers.items():
+        question = quiz_data[str(key)]
+        is_correct = value in question['correct_answer'] if isinstance(question['correct_answer'], list) else value == question['correct_answer']
+        results[key] = {
+            'question': question['title'],
+            'options': question['options'],
+            'user_answer': value,
+            'correct_answer': question['correct_answer'],
+            'is_correct': is_correct,
+            'media': question.get('media')  # Include media if available
+        }
+    return render_template('view_result.html', results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)
