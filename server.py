@@ -12,7 +12,8 @@ lessons = {
         "title": "How to safety fall in bouldering",
         "media": "http://valcursus.nl/media/posts/8/responsive/poster-md.png",
         "media_type": "vertical",
-        "text": "To safely fall, you want to fall on your feet with knees bent (squat position) and engage the Tuck and Roll technique. The Tuck & Roll technique implies that you TUCK your arms as you jump down and ROLL backward to break the fall. Tucking your arms prevents you from landing on and potentially breaking your arms and rolling over takes pressure away from the knees.",
+        "text":
+            "The Tuck & Roll technique implies that you TUCK your arms as you jump down and ROLL backward to break the fall. Tucking your arms prevents you from landing on and potentially breaking your arms and rolling over takes pressure away from your knees.",
         "previous_lesson": "home",
         "next_lesson": "2"
     },
@@ -29,7 +30,7 @@ lessons = {
         "title": "Step 1: T-rex",
         "media": "https://ih1.redbubble.net/image.852291934.8842/flat,750x,075,f-pad,750x1000,f8f8f8.u3.jpg",
         "media_type": "vertical",
-        "text": "Just like a T-rex dinosaur\nLand on your feet with bent knees\nTuck your arms inside",
+        "text": "Just like a T-rex dinosaur - Land on your feet with bent knees & tuck your arms inside.",
         "previous_lesson": "2",
         "next_lesson": "4"
     },
@@ -38,7 +39,7 @@ lessons = {
         "title": "Step 2: Turtle",
         "media": "https://png.pngtree.com/png-clipart/20230813/original/pngtree-funny-tortoise-turtle-walking-climbing-rock-exotic-reptile-cartoon-picture-image_7909655.png",
         "media_type": "horizontal",
-        "text": "Put chin on chest to avoid head injuries",
+        "text": "Just like a turtle - Put chin on chest to avoid head injuries.",
         "previous_lesson": "3",
         "next_lesson": "5" 
     },
@@ -47,14 +48,14 @@ lessons = {
         "title": "Step 3: Roll",
         "media": "https://lh5.googleusercontent.com/proxy/MMyexNOu5E33wBjlzTkYGN9gDO29L6C8_No7PbdWkyVjzCMza4Aw51GsamHnQsDLM0FueiA5g-5HPWBfl1qUg72vBA",
         "media_type": "vertical",
-        "text": "Roll back. Don't lean forward otherwise your face will hit the wall.",
+        "text": "Roll back - Don't lean forward otherwise your face will hit the wall.",
         "previous_lesson": "4",
         "next_lesson": "6" 
     },
     "6": {
         "lesson_id": "6",
-        "title": "Quick Check 1/2",
-        "question": "You should roll forwards after landing with two feet.",
+        "title": "Quick Check on Safety 1/2",
+        "question": "If the following statement True or False: You should roll forwards after landing with two feet.",
         "options": ["True", "False"],  
         "correct_answer": "False", 
         "previous_lesson": "5",
@@ -62,7 +63,7 @@ lessons = {
     }, 
     "7": {
         "lesson_id": "7",
-        "title": "Quick Check 2/2",
+        "title": "Quick Check on Safety 2/2",
         "steps": ["T-rex", "Turtle", "Roll"],
         "previous_lesson": "6",
         "next_lesson": "8" 
@@ -72,7 +73,7 @@ lessons = {
     "title": "Congratulations!",
     "media": "https://em-content.zobj.net/source/skype/289/party-popper_1f389.png", 
     "media_type": "square",
-    "text": "You finished the Safety section! Please click next to learn about different climbing types!",
+    "text": "You've completed the Safety section! Please click next to learn about the different climbing types!",
     "previous_lesson": "7",
     "next_lesson": "climbing_types/1"
     }
@@ -83,6 +84,7 @@ climbing_types_lessons = {
         "lesson_id": "1",
         "title": "Introduction to Climbing Types",
         "media": "https://media1.thehungryjpeg.com/thumbs2/ori_3749506_dvp8tk78yl6s4dzmurit1ssxf30xip51b173qqm9_young-climber-man-vector-rock-climbing-sport-different-poses-tourist-hiking-trekking-cartoon-character-illustration.jpg",
+        "media_type": "horizontal",
         "text": "Discover different climbing disciplines: Sport, Trad, Bouldering, and Free Solo.",
         "previous_lesson": "8",
         "next_lesson": "2"
@@ -91,6 +93,7 @@ climbing_types_lessons = {
         "lesson_id": "2",
         "title": "Bouldering Techniques",
         "media": "https://st.depositphotos.com/1763191/58677/v/450/depositphotos_586773220-stock-illustration-indoor-rock-climbing-gym-illustration.jpg",
+        "media_type": "horizontal",
         "text": "The most common climbing in gym.No harness required",
         "previous_lesson": "1", 
         "next_lesson": "3" 
@@ -99,6 +102,7 @@ climbing_types_lessons = {
         "lesson_id": "3",
         "title": "Auto-belay",
         "media": "https://www.wikihow.com/images/thumb/3/36/Belay-Step-21.jpg/v4-460px-Belay-Step-21.jpg.webp", 
+        "media_type": "horizontal",
         "text": "There is a auto-belay machine at the top of the wall.Harness required. Don’t need belay partner.",
         "previous_lesson": "2", 
         "next_lesson": "4" 
@@ -107,6 +111,7 @@ climbing_types_lessons = {
         "lesson_id": "4",
         "title": "Top rope belay",
         "media": "https://www.vdiffclimbing.com/wp-content/images/basics/basic-top-rope-belay/take-in-top-rope-belay-2.png", 
+        "media_type": "horizontal",
         "text": "There is an anchor at the top. Harness required. Need a belay partner. ",
         "previous_lesson": "3", 
         "next_lesson": "5" 
@@ -115,14 +120,16 @@ climbing_types_lessons = {
         "lesson_id": "5",
         "title": "Lead",
         "media": "https://www.vdiffclimbing.com/wp-content/images/basics/basic-top-rope/top-rope-climbing-1.png", 
+        "media_type": "vertical",
         "text": "Climber has to adjust the rope. Harness required. Need a belay partner.", 
         "previous_lesson": "4", 
         "next_lesson": "6" 
     },
     "6": {
         "lesson_id": "6",
-        "title": "Quiz on Climbing Types",
+        "title": "Quick Check on Climbing Types 1/1",
         "media": "https://www.wikihow.com/images/thumb/3/36/Belay-Step-21.jpg/v4-460px-Belay-Step-21.jpg.webp",
+        "media_type": "horizontal",
         "text": "",
         "question": "Identify the type of climbing shown in the picture.",
         "options": ["Auto Belay", "Lead", "Bouldering"],
@@ -135,7 +142,7 @@ climbing_types_lessons = {
     "title": "Congratulations!",
     "media": "https://em-content.zobj.net/source/skype/289/party-popper_1f389.png", 
     "media_type": "square",
-    "text": "You finished the Climbing Types! Please click next to learn about different climbing types!",
+    "text": "You've completed the Climbing Types section! Please click next to learn about the grading system!",
     "previous_lesson": "6",
     "next_lesson": "grading_systems/1"
     }
@@ -146,6 +153,7 @@ grading_systems_lessons = {
             "lesson_id": "1",
             "title": "Introduction to Grading Systems",
             "media": "https://i.pinimg.com/originals/a1/90/89/a1908956ebfbb4b3af9dd74d31f32109.jpg",
+            "media_type": "horizontal",
             "text": "Discover the grading system!",
             "previous_lesson": "7",
             "next_lesson": "2"
@@ -154,6 +162,7 @@ grading_systems_lessons = {
             "lesson_id": "2",
             "title": "V-Scale",
             "media": "https://i.pinimg.com/736x/5a/82/c1/5a82c17a8be23ffa049327140550ce77.jpg",
+            "media_type": "vertical",
             "text": "V-Scale is the grading system for bouldering in American. As a beginner, start from V0 in gym.",
             "previous_lesson": "1", 
             "next_lesson": "3" 
@@ -162,13 +171,14 @@ grading_systems_lessons = {
             "lesson_id": "3",
             "title": "Yosemite Decimal System (YDS)",
             "media": "https://static.wixstatic.com/media/a015e3_d349bdd9b9b54ae7b61b65f6d19f0b26~mv2.png",
+            "media_type": "vertical",
             "text": "American Grading system for route climbing. In gym, you would typically found routes in 5.6 - 5.13 levels. As a beginner, start from 5.6",
             "previous_lesson": "2", 
             "next_lesson": "4",
         },
         "4": {
             "lesson_id": "4",
-            "title": "Quick Check",
+            "title": "Quick Check on Grading System 1/1",
             "media": "",
             "text": "",
             "question": "What is the grading system for bouldering in America?",
@@ -182,9 +192,9 @@ grading_systems_lessons = {
             "title": "Congratulations!",
             "media": "https://em-content.zobj.net/source/skype/289/party-popper_1f389.png", 
             "media_type": "square",
-            "text": "You finished the Grading Systems!",
+            "text": "You've completed the Grading Systems section! Click 'Next' to continue your journey and become a rock climbing newbie!",
             "previous_lesson": "4",
-            "next_lesson": "quiz"
+            "next_lesson": "quiz/0"
         }
 }
 

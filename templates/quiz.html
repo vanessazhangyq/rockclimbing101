@@ -1,23 +1,39 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>{{ data.title }}</h2>
-{% if data.media %}
-    <img src="{{ data.media }}" alt="Media related to the question">
-{% endif %}
-<form method="post" action="{{ url_for('quiz', quiz_num=data.next) }}">
-    {% if data.options|length > 0 %}
-        {% for option in data.options %}
-            <input type="radio" name="answer" value="{{ option }}" id="{{ option }}">
-            <label for="{{ option }}">{{ option }}</label><br>
-        {% endfor %}
-    {% endif %}
-    <div class="navigation-buttons d-flex justify-content-between mt-4">
-        {% if data.quiz_num == "6" %}
-            <a href="/view_result" class="btn btn-primary">View Result</a>
-        {% else %}
-            <button type="submit" class="btn btn-primary">Next</button>
-        {% endif %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="lesson-title text-center">{{ data.title }}</h1>
+            
+            <!-- Display the quiz's media if available -->
+            {% if data.media %}
+                <div class="lesson-media text-center">
+                    <img src="{{ data.media }}" alt="Media related to the question" class="img-fluid">
+                </div>
+            {% endif %}
+            
+            <!-- Quiz Form -->
+            <div class="quiz-section text-center mt-4">
+                <form method="post" action="{{ url_for('quiz', quiz_num=data.next) }}">
+                    {% if data.options|length > 0 %}
+                        {% for option in data.options %}
+                            <div class="form-check text-center mx-auto">
+                                <input type="radio" name="answer" value="{{ option }}" id="{{ option }}" class="form-check-input">
+                                <label class="form-check-label" for="{{ option }}">{{ option }}</label>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="navigation-quiz d-flex justify-content-center mt-4">
+                        {% if data.quiz_num == "6" %}
+                            <a href="/view_result" class="btn btn-primary">View Result</a>
+                        {% else %}
+                            <button type="submit" class="btn btn-primary">Next</button>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</form>
+</div>
 {% endblock %}

@@ -3,13 +3,14 @@
 /* All pages universal styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;  /* light background color for better readability */
+    background-color: #edf1f7/* light background color for better readability */
 }
 
 /* Home Page Styles */
 .home-title {
     text-align: center;
     margin-top: 20px;
+    color: darkslategray; 
 }
 
 .home-icon {
@@ -19,10 +20,11 @@ body {
 }
 
 .home-details {
-    color: #6c757d; /* Bootstrap's default gray */
+    color: #6c757d; 
     text-align: center;
     margin-bottom: 20px;
 }
+
 
 /* Safety Page Specific Styles */
 .safety-lesson {
@@ -37,10 +39,13 @@ body {
 
 .lesson-title {
     margin-top: 20px;
+    color: darkslategray; 
 }
 
-.lesson-text, .quiz-section {
+.lesson-text {
     margin-top: 20px;
+    font-size: 1.1em;  /* Slightly larger font size for text */
+    color: #6c757d; 
 }
 
 /* Media styles */
@@ -87,6 +92,11 @@ body {
     width: 100%; /* Ensures form takes full width for consistent alignment */
 }
 
+.quiz-section {
+    margin-top: 20px;
+    width: 100%;  /* Full width for alignment */
+}
+
 .form-check {
     margin: 5px auto; /* Automatically centers the check within the form */
     width: fit-content; /* Shrinks wrap to the size of its contents */
@@ -108,6 +118,14 @@ body {
 .navigation-buttons {
     display: flex;
     justify-content: space-between; /* Spread apart back and next buttons */
+    margin-top: 20px;
+}
+
+/* Navigation Buttons */
+.navigation-quiz {
+    display: flex;
+    justify-content: center; /* Align buttons to the center */
+    width: 100%;
     margin-top: 20px;
 }
 

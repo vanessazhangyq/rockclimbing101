@@ -1,63 +1,70 @@
 {% extends "layout.html" %}
-{% block content %}
-<div class="grading-systems-lesson">
-    {% if not lesson.question %}
-        <h1 class="lesson-title">{{ lesson.title }}</h1>
-        
-        <!-- Display the lesson's media -->
-        <div class="lesson-media">
-            <img src="{{ lesson.media }}" alt="Illustration of Grading Systems" class="img-fluid">
-        </div>
 
-        <!-- Display the lesson's text -->
-        <div class="lesson-text">
-            <p>{{ lesson.text }}</p>
-        </div>
-    {% endif %}
-    
-    <!-- Quiz Section if available -->
-    {% if lesson.question %}
-        <div class="quiz-section mt-4 text-center">
-            <p class="quiz-question">{{ lesson.question }}</p>
+{% block content %}
+<div class="grading-systems-lesson container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="lesson-title text-center">{{ lesson.title }}</h1>
+            
+            <!-- Display the lesson's media based on type -->
             {% if lesson.media %}
-                <img src="{{ lesson.media }}" alt="Grading Systems Image" class="img-fluid">
-            {% endif %}
-            <form class="quiz-form d-flex flex-column align-items-center" action="{{ url_for('submit_grading_quiz', lesson_id=lesson.lesson_id) }}" method="POST">
-                {% for option in lesson.options %}
-                    <div class="form-check text-center mx-auto">
-                        <input class="form-check-input" type="radio" name="quizAnswer" id="answer{{ loop.index }}" value="{{ option }}">
-                        <label class="form-check-label" for="answer{{ loop.index }}">
-                            {{ option }}
-                        </label>
+                {% if lesson.media_type == 'horizontal' %}
+                    <div class="horizontal-media">
+                        <img src="{{ lesson.media }}" alt="Horizontal Media" class="img-fluid">
                     </div>
-                {% endfor %}
-                <button type="submit" class="btn btn-primary mt-3">Submit</button>
-            </form>
-            <!-- Back button is included in the quiz section for accessibility after the quiz -->
+                {% elif lesson.media_type == 'vertical' %}
+                    <div class="vertical-media">
+                        <img src="{{ lesson.media }}" alt="Vertical Media" class="img-fluid">
+                    </div>
+                {% elif lesson.media_type == 'square' %}
+                    <div class="square-media">
+                        <img src="{{ lesson.media }}" alt="Square Media" class="img-fluid">
+                    </div>
+                {% endif %}
+            {% endif %}
+            
+            <!-- Display the lesson's text -->
+            <div class="lesson-text mt-4 text-center">
+                <p>{{ lesson.text }}</p>
+            </div>
+            
+            <!-- Quiz Section if available -->
+            {% if lesson.question %}
+                <div class="quiz-section text-center">
+                    <p class="quiz-question">{{ lesson.question }}</p>
+                    <form class="quiz-form d-flex flex-column align-items-center" action="{{ url_for('submit_grading_quiz', lesson_id=lesson.lesson_id) }}" method="POST">
+                        {% for option in lesson.options %}
+                            <div class="form-check text-center mx-auto">
+                                <input class="form-check-input" type="radio" name="quizAnswer" id="answer{{ loop.index }}" value="{{ option }}">
+                                <label class="form-check-label" for="answer{{ loop.index }}">
+                                    {{ option }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </form>
+                </div>
+            {% endif %}
+            
+            <!-- Navigation buttons -->
             <div class="navigation-buttons d-flex justify-content-between mt-4">
-                <a href="{{ url_for('grading_systems', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
-                <div style="flex-grow: 1;"></div> <!-- This empty div pushes the next button to the right -->
-                <a href="{{ url_for('grading_systems', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
+                {% if lesson.previous_lesson %}
+                    <a href="{{ url_for('grading_systems', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
+                {% else %}
+                    <button disabled class="btn btn-secondary">Back</button>
+                {% endif %}
+                
+                {% if lesson.next_lesson %}
+                    {% if lesson.next_lesson == "quiz/0" %}
+                        <a href="{{ url_for('quiz', quiz_num=0) }}" class="btn btn-primary">Next</a>
+                    {% else %}
+                        <a href="{{ url_for('grading_systems', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
+                    {% endif %}
+                {% else %}
+                    <button disabled class="btn btn-primary">Next</button>
+                {% endif %}
             </div>
         </div>
-    {% else %}
-        <!-- Navigation buttons -->
-        <div class="navigation-buttons d-flex justify-content-between mt-4">
-            {% if lesson.lesson_id == '1' %}
-                <!-- If it's the first lesson, link back to the last lesson of the Climbing types section -->
-                <a href="{{ url_for('climbing_types', lesson_id='7') }}" class="btn btn-secondary">Back</a>
-            {% else %}
-                <!-- Link back to the previous Grading systems lesson -->
-                <a href="{{ url_for('grading_systems', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
-            {% endif %}
-            <div style="flex-grow: 1;"></div> <!-- This empty div pushes the next button to the right -->
-            <!-- Next button, only show if there is no quiz or after the quiz has been displayed -->
-            {% if lesson.next_lesson == 'quiz' %}
-                <a href="{{ url_for('quiz', quiz_num=0) }}" class="btn btn-primary">Next</a>
-            {% else %}
-                <a href="{{ url_for('grading_systems', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
-            {% endif %}
-        </div>
-    {% endif %}
+    </div>
 </div>
 {% endblock %}
