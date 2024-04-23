@@ -61,8 +61,8 @@ body {
 }
 
 .vertical-media {
-    width: 50%; /* Half the width of the container to maintain a vertical look */
-    height: 500px; /* Taller height for vertical media */
+    width: 40ch; /* Half the width of the container to maintain a vertical look */
+    height: 40ch; /* Taller height for vertical media */
     margin: auto; /* Centering the media */
 }
 
@@ -90,20 +90,6 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%; /* Ensures form takes full width for consistent alignment */
-}
-
-.quiz-section {
-    margin-top: 20px;
-    width: 100%;  /* Full width for alignment */
-}
-
-.form-check {
-    margin: 5px auto; /* Automatically centers the check within the form */
-    width: fit-content; /* Shrinks wrap to the size of its contents */
-}
-
-.form-check-input {
-    margin-right: 10px; /* Ensures space between the checkbox and label */
 }
 
 .quiz-question {
@@ -169,4 +155,48 @@ body {
     text-align: center;
     color: #6c757d;
     background-color: #f8f9fa; /* Slight highlight on hover */
+}
+
+.view_result_container {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#player{
+    height: 37ch;
+    width: 72ch;
+}
+
+
+.form-check {
+    margin: 20px auto; /* Adds spacing and centers the block */
+    width: max-content; /* Automatically adjusts to the content size */
+    text-align: center; /* Ensures the text is centered */
+}
+
+.form-check-input {
+    display: none; /* Hide the default radio button */
+}
+
+.form-check-label {
+    display: inline-block;
+    width: 280px;
+    background-color: #f8f9fa; /* Light grey background */
+    color: #333; /* Dark text for contrast */
+    padding: 10px 20px; /* Padding around the text */
+    font-size: 18px; /* Larger text for better readability */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners for a button-like appearance */
+    cursor: pointer; /* Indicates that the label is clickable */
+    transition: all 0.3s ease; /* Smooth transition for style changes */
+}
+
+/* Hover effect to change background and border color */
+.form-check-label:hover {
+    background-color: #e2e6ea; /* Slightly darker grey on hover */
+}
+
+/* Changes border color to blue when the radio button is selected */
+.form-check-input:checked + .form-check-label {
+    border-color: #007bff; /* Bootstrap blue */
 }

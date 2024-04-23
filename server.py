@@ -85,25 +85,25 @@ climbing_types_lessons = {
         "title": "Introduction to Climbing Types",
         "media": "https://media1.thehungryjpeg.com/thumbs2/ori_3749506_dvp8tk78yl6s4dzmurit1ssxf30xip51b173qqm9_young-climber-man-vector-rock-climbing-sport-different-poses-tourist-hiking-trekking-cartoon-character-illustration.jpg",
         "media_type": "horizontal",
-        "text": "Discover different climbing disciplines: Sport, Trad, Bouldering, and Free Solo.",
+        "text": "Discover different climbing types.",
         "previous_lesson": "8",
         "next_lesson": "2"
     },
     "2": {
         "lesson_id": "2",
-        "title": "Bouldering Techniques",
-        "media": "https://st.depositphotos.com/1763191/58677/v/450/depositphotos_586773220-stock-illustration-indoor-rock-climbing-gym-illustration.jpg",
+        "title": "Bouldering",
+        "media": "/static/images/bouldering.png",
         "media_type": "horizontal",
-        "text": "The most common climbing in gym.No harness required",
+        "text": "The most common climbing in gym. No harness required.",
         "previous_lesson": "1", 
         "next_lesson": "3" 
     },
     "3": {
         "lesson_id": "3",
         "title": "Auto-belay",
-        "media": "https://www.wikihow.com/images/thumb/3/36/Belay-Step-21.jpg/v4-460px-Belay-Step-21.jpg.webp", 
+        "media": "/static/images/auto-belay.png", 
         "media_type": "horizontal",
-        "text": "There is a auto-belay machine at the top of the wall.Harness required. Don’t need belay partner.",
+        "text": "There is a auto-belay machine at the top of the wall. Harness required. Don’t need belay partner.",
         "previous_lesson": "2", 
         "next_lesson": "4" 
     },
@@ -111,7 +111,7 @@ climbing_types_lessons = {
         "lesson_id": "4",
         "title": "Top rope belay",
         "media": "https://www.vdiffclimbing.com/wp-content/images/basics/basic-top-rope-belay/take-in-top-rope-belay-2.png", 
-        "media_type": "horizontal",
+        "media_type": "vertical",
         "text": "There is an anchor at the top. Harness required. Need a belay partner. ",
         "previous_lesson": "3", 
         "next_lesson": "5" 
@@ -119,21 +119,21 @@ climbing_types_lessons = {
     "5": {
         "lesson_id": "5",
         "title": "Lead",
-        "media": "https://www.vdiffclimbing.com/wp-content/images/basics/basic-top-rope/top-rope-climbing-1.png", 
-        "media_type": "vertical",
-        "text": "Climber has to adjust the rope. Harness required. Need a belay partner.", 
+        "media": "https://scl.cornell.edu/sites/scl/files/2020-05/COE%20ROCK%20Lead5%20HRZ.jpg", 
+        "media_type": "horizontal",
+        "text": "Climber has to clip-in the rope as they go. Harness required. Need a belay partner.", 
         "previous_lesson": "4", 
         "next_lesson": "6" 
     },
     "6": {
         "lesson_id": "6",
         "title": "Quick Check on Climbing Types 1/1",
-        "media": "https://www.wikihow.com/images/thumb/3/36/Belay-Step-21.jpg/v4-460px-Belay-Step-21.jpg.webp",
+        "media": "/static/images/bouldering.png",
         "media_type": "horizontal",
         "text": "",
         "question": "Identify the type of climbing shown in the picture.",
         "options": ["Auto Belay", "Lead", "Bouldering"],
-        "correct_answer": "Auto Belay",
+        "correct_answer": "Bouldering",
         "previous_lesson": "5",
         "next_lesson": "7"
     },
@@ -183,7 +183,7 @@ grading_systems_lessons = {
             "text": "",
             "question": "What is the grading system for bouldering in America?",
             "options": ["V-Scale", "YDS"],
-            "correct_answer": "YDS",
+            "correct_answer": "V-Scale",
             "previous_lesson": "3",
             "next_lesson": "5"
         },
@@ -201,7 +201,6 @@ grading_systems_lessons = {
 quiz_data = {
     "0": {"quiz_num": "0",  #start
           "title": "Test your knowledge now! 5 quiz questions in total.", 
-          "media": "/static/images/quiz.png",
           "options": [], 
           "correct_answer": "", 
           "back": "/", 

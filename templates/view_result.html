@@ -1,16 +1,38 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>Quiz Results</h2>
-<div class="results">
+<div class="view_result_container">
+<h2 class="mt-3 lesson-title">Quiz Results</h2>
+<div class="results mt-3">
     {% for key, result in results.items() %}
     <div class="card mb-3">
         <div class="card-header">{{ result.question }}</div>
         {% if result.media %}
             {% if "youtu" in result.media %}
-                <iframe class="card-img-top" src="{{ result.media }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- The YouTube video iframe -->
+                <div id="player" style="align-self: center;"></div>
+
+                <script>
+                // Load the IFrame Player API code asynchronously.
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                // Create an <iframe> (and YouTube player) after the API code downloads.
+                var player;
+                function onYouTubeIframeAPIReady() {
+                    player = new YT.Player('player', {
+                    height: '360',
+                    width: '640',
+                    videoId: 'vD4jf_iw5Dk', // Replace 'YOUR_VIDEO_ID' with the actual ID of the YouTube video.
+                    });
+                }
+
+                
+                </script>
             {% else %}
-                <img src="{{ result.media }}" class="card-img-top" alt="Media">
+                    <img src="{{ result.media }}" alt="Media" style="width: 30%; height: auto; align-self: center;">
             {% endif %}
         {% endif %}
         <ul class="list-group list-group-flush">
@@ -27,5 +49,6 @@
     </div>
     {% endfor %}
 </div>
-<a href="/quiz" class="btn btn-primary">Retake Quiz</a>
+<a href="/quiz/1" class="btn btn-primary">Retake Quiz</a>
+</div>
 {% endblock %}
