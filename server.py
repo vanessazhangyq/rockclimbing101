@@ -201,6 +201,7 @@ grading_systems_lessons = {
 quiz_data = {
     "0": {"quiz_num": "0",  #start
           "title": "Test your knowledge now! 5 quiz questions in total.", 
+          "media": "/static/images/quiz.png",
           "options": [], 
           "correct_answer": "", 
           "back": "/", 
