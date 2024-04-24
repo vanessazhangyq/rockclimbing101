@@ -260,13 +260,22 @@ def safety(lesson_id):
     lesson = lessons.get(lesson_id, None)
     if lesson is None:
         return redirect(url_for('home'))
+
     previous_lesson = lesson.get('previous_lesson')
     previous_lesson_url = url_for('home') if previous_lesson == "home" else url_for('safety', lesson_id=previous_lesson)
 
     next_lesson = lesson.get('next_lesson')
-    next_lesson_url = url_for('safety', lesson_id=next_lesson)
+    if next_lesson.isdigit():
+        next_lesson_url = url_for('safety', lesson_id=next_lesson)
+    elif "climbing_types" in next_lesson:
+        next_lesson_url = url_for('climbing_types', lesson_id=next_lesson.split('/')[-1])
+    elif "grading_systems" in next_lesson:
+        next_lesson_url = url_for('grading_systems', lesson_id=next_lesson.split('/')[-1])
+    else:
+        next_lesson_url = url_for('home')
 
     return render_template('safety.html', lesson=lesson, previous_lesson_url=previous_lesson_url, next_lesson_url=next_lesson_url)
+
 
 
 @app.route('/safety/<lesson_id>/submit_quiz', methods=['POST'])
