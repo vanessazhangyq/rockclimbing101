@@ -259,20 +259,15 @@ def safety_index():
 def safety(lesson_id):
     lesson = lessons.get(lesson_id, None)
     if lesson is None:
-        return redirect(url_for('home')) 
+        return redirect(url_for('home'))
     previous_lesson = lesson.get('previous_lesson')
-    if previous_lesson != "home":
-        previous_lesson_url = url_for('safety', lesson_id=previous_lesson)
-    else:
-        previous_lesson_url = url_for('home')
+    previous_lesson_url = url_for('home') if previous_lesson == "home" else url_for('safety', lesson_id=previous_lesson)
 
     next_lesson = lesson.get('next_lesson')
-    if "climbing_types" in next_lesson:
-        next_lesson_url = url_for('climbing_types', lesson_id=next_lesson.split('/')[-1])
-    else:
-        next_lesson_url = url_for('safety', lesson_id=next_lesson)
+    next_lesson_url = url_for('safety', lesson_id=next_lesson)
 
     return render_template('safety.html', lesson=lesson, previous_lesson_url=previous_lesson_url, next_lesson_url=next_lesson_url)
+
 
 @app.route('/safety/<lesson_id>/submit_quiz', methods=['POST'])
 def submit_quiz(lesson_id):
@@ -321,12 +316,13 @@ def climbing_types(lesson_id):
     if lesson is None:
         return redirect(url_for('home'))
 
-    # Check if the next lesson is a transition to grading systems
-    # Ensure this check only occurs if there's no more content to be displayed in the current section
-    if "grading_systems" in lesson['next_lesson'] and lesson_id == '8':
-        return redirect(url_for('grading_systems', lesson_id=lesson['next_lesson'].split('/')[-1]))
+    previous_lesson = lesson.get('previous_lesson')
+    previous_lesson_url = url_for('home') if previous_lesson == "home" else url_for('climbing_types', lesson_id=previous_lesson)
 
-    return render_template('climbing_types.html', lesson=lesson)
+    next_lesson = lesson.get('next_lesson')
+    next_lesson_url = url_for('climbing_types', lesson_id=next_lesson)
+
+    return render_template('climbing_types.html', lesson=lesson, previous_lesson_url=previous_lesson_url, next_lesson_url=next_lesson_url)
 
 
 @app.route('/climbing_types/<lesson_id>/submit_quiz', methods=['POST'])
@@ -355,7 +351,13 @@ def grading_systems(lesson_id):
     if lesson is None:
         return redirect(url_for('home'))
 
-    return render_template('grading_systems.html', lesson=lesson)
+    previous_lesson = lesson.get('previous_lesson')
+    previous_lesson_url = url_for('home') if previous_lesson == "home" else url_for('grading_systems', lesson_id=previous_lesson)
+
+    next_lesson = lesson.get('next_lesson')
+    next_lesson_url = url_for('grading_systems', lesson_id=next_lesson)
+
+    return render_template('grading_systems.html', lesson=lesson, previous_lesson_url=previous_lesson_url, next_lesson_url=next_lesson_url)
 
 @app.route('/grading_systems/<lesson_id>/submit_quiz', methods=['POST'])
 def submit_grading_quiz(lesson_id):
