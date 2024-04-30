@@ -55,7 +55,7 @@ lessons = {
     "6": {
         "lesson_id": "6",
         "title": "Quick Check on Safety 1/2",
-        "question": "If the following statement True or False: You should roll forwards after landing with two feet.",
+        "question": "Is the following statement True or False: You should roll forwards after landing with two feet.",
         "options": ["True", "False"],  
         "correct_answer": "False", 
         "previous_lesson": "5",
