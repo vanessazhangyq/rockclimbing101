@@ -20,7 +20,7 @@ lessons = {
     "2": {
         "lesson_id": "2",
         "title": "Video Demo",
-        "video": "https://www.youtube.com/embed/vD4jf_iw5Dk",
+        "video": "https://www.youtube.com/embed/uOILi_HMi70?si=VW2cDSu85kFzBczp",
         "text": "",
         "previous_lesson": "1",
         "next_lesson": "3"
@@ -64,7 +64,7 @@ lessons = {
     "7": {
         "lesson_id": "7",
         "title": "Quick Check on Safety 2/2",
-        "steps": ["T-rex", "Turtle", "Roll"],
+        "steps": ["T-rex", "Roll", "Turtle"],
         "previous_lesson": "6",
         "next_lesson": "8" 
     },
@@ -111,7 +111,7 @@ climbing_types_lessons = {
         "lesson_id": "4",
         "title": "Top rope belay",
         "media": "https://www.vdiffclimbing.com/wp-content/images/basics/basic-top-rope-belay/take-in-top-rope-belay-2.png", 
-        "media_type": "vertical",
+        "media_type": "horizontal",
         "text": "There is an anchor at the top. Harness required. Need a belay partner. ",
         "previous_lesson": "3", 
         "next_lesson": "5" 
@@ -170,8 +170,8 @@ grading_systems_lessons = {
         "3": {
             "lesson_id": "3",
             "title": "Yosemite Decimal System (YDS)",
-            "media": "https://static.wixstatic.com/media/a015e3_d349bdd9b9b54ae7b61b65f6d19f0b26~mv2.png",
-            "media_type": "vertical",
+            "media": "https://miro.medium.com/v2/resize:fit:568/1*bF7mHd1xbTnoAoklPK37sw.png",
+            "media_type": "grading",
             "text": "American Grading system for route climbing. In gym, you would typically found routes in 5.6 - 5.13 levels. As a beginner, start from 5.6",
             "previous_lesson": "2", 
             "next_lesson": "4",

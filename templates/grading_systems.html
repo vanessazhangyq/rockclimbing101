@@ -20,6 +20,10 @@
                     <div class="square-media">
                         <img src="{{ lesson.media }}" alt="Square Media" class="img-fluid">
                     </div>
+                {% elif lesson.media_type == 'grading' %}
+                    <div class="grading-media">
+                        <img src="{{ lesson.media }}" alt="Grading Media" class="img-fluid">
+                    </div>
                 {% endif %}
             {% endif %}
             

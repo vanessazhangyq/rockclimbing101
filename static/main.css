@@ -61,12 +61,24 @@ body {
 }
 
 .vertical-media {
-    width: 40ch; /* Half the width of the container to maintain a vertical look */
-    height: 40ch; /* Taller height for vertical media */
+    width: 400px;
+    height: 600px; 
     margin: auto; /* Centering the media */
 }
 
 .vertical-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grading-media {
+    width: 450px;
+    height: 800px; 
+    margin: auto; /* Centering the media */
+}
+
+.grading-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
