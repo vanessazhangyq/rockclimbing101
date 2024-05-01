@@ -133,7 +133,7 @@ climbing_types_lessons = {
         "text": "",
         "question": "Identify the type of climbing shown in the picture.",
         "options": ["Auto Belay", "Lead", "Top Rope Belay"],
-        "correct_answer": "Top Rope Belay",
+        "correct_answer": "Lead",
         "previous_lesson": "5",
         "next_lesson": "7"
     },
