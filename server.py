@@ -181,9 +181,9 @@ grading_systems_lessons = {
             "title": "Quick Check on Grading System 1/1",
             "media": "",
             "text": "",
-            "question": "What is the grading system for bouldering in America?",
-            "options": ["V-Scale", "YDS"],
-            "correct_answer": "V-Scale",
+            "question": "Is the following statement True or False: As a beginner, you will start at level 6.5 in the Yosemite Decimal System (YDS).",
+            "options": ["True", "False"],  
+            "correct_answer": "False",
             "previous_lesson": "3",
             "next_lesson": "5"
         },
