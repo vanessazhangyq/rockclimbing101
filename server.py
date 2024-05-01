@@ -163,7 +163,7 @@ grading_systems_lessons = {
             "title": "V-Scale",
             "media": "https://i.pinimg.com/736x/5a/82/c1/5a82c17a8be23ffa049327140550ce77.jpg",
             "media_type": "vertical",
-            "text": "V-Scale is the grading system for bouldering in American. As a beginner, start from V0 in gym.",
+            "text": "V-Scale is the grading system for bouldering in America. As a beginner, start from V0 in gym.",
             "previous_lesson": "1", 
             "next_lesson": "3" 
         },
@@ -172,7 +172,7 @@ grading_systems_lessons = {
             "title": "Yosemite Decimal System (YDS)",
             "media": "https://miro.medium.com/v2/resize:fit:568/1*bF7mHd1xbTnoAoklPK37sw.png",
             "media_type": "grading",
-            "text": "American Grading system for route climbing. In gym, you would typically found routes in 5.6 - 5.13 levels. As a beginner, start from 5.6",
+            "text": "American Grading system for route climbing. In gym, you would typically find routes in 5.6 - 5.13 levels. As a beginner, start from 5.6",
             "previous_lesson": "2", 
             "next_lesson": "4",
         },
