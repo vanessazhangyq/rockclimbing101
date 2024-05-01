@@ -128,12 +128,12 @@ climbing_types_lessons = {
     "6": {
         "lesson_id": "6",
         "title": "Quick Check on Climbing Types 1/1",
-        "media": "/static/images/bouldering.png",
-        "media_type": "horizontal",
+        "media": "https://www.vdiffclimbing.com/wp-content/images/sport/better-belayer/better-belayer-2.png",
+        "media_type": "vertical",
         "text": "",
         "question": "Identify the type of climbing shown in the picture.",
-        "options": ["Auto Belay", "Lead", "Bouldering"],
-        "correct_answer": "Bouldering",
+        "options": ["Auto Belay", "Lead", "Top Rope Belay"],
+        "correct_answer": "Top Rope Belay",
         "previous_lesson": "5",
         "next_lesson": "7"
     },
