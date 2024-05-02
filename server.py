@@ -383,14 +383,19 @@ def submit_grading_quiz(lesson_id):
     
     return redirect(url_for('grading_systems', lesson_id=lesson_id))
 
-# Route for handling the quiz page
-user_answers = { # store user answers
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-    5: ""
-} 
+# Routes for handling the quiz page
+user_answers = { # reset answers if retake quiz
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: ""
+        } 
+@app.route('/reset_quiz')
+def reset_quiz():
+    global user_answers
+    user_answers = {1: "", 2: "", 3: "", 4: "", 5: ""}
+    return redirect(url_for('quiz', quiz_num="0"))
 
 @app.route('/quiz')
 def quiz_index():
@@ -440,6 +445,7 @@ def view_result():
             'media': question.get('media')  # Include media if available
         }
     return render_template('view_result.html', results=results)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
