@@ -53,7 +53,13 @@
             <!-- Navigation buttons -->
             <div class="navigation-buttons d-flex justify-content-between mt-4">
                 {% if lesson.previous_lesson %}
-                    <a href="{{ url_for('grading_systems', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
+
+                {% if lesson.lesson_id == '1' %}
+                <a href="{{ url_for('climbing_types', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
+                {% else %}
+                <a href="{{ url_for('grading_systems', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
+                {% endif %}
+
                 {% else %}
                     <button disabled class="btn btn-secondary">Back</button>
                 {% endif %}
