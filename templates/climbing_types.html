@@ -67,14 +67,18 @@
             <!-- Navigation buttons -->
             <div class="navigation-buttons d-flex justify-content-between mt-4">
                 {% if lesson.previous_lesson %}
-                    <a href="{{ url_for('climbing_types', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
+                    {% if lesson.previous_lesson == '8' %}  <!-- Assuming '8' is the last lesson ID in the safety section -->
+                        <a href="{{ url_for('safety', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
+                    {% else %}
+                        <a href="{{ url_for('climbing_types', lesson_id=lesson.previous_lesson) }}" class="btn btn-secondary">Back</a>
+                    {% endif %}
                 {% else %}
                     <button disabled class="btn btn-secondary">Back</button>
                 {% endif %}
                 <div style="flex-grow: 1;"></div> <!-- This empty div pushes the next button to the right -->
                 {% if lesson.next_lesson %}
-                    {% if lesson.lesson_id == '7' %}
-                        <a href="{{ url_for('grading_systems', lesson_id=lesson.next_lesson.split('/')[-1]) }}" class="btn btn-primary">Next</a>
+                    {% if lesson.next_lesson.split('/')[0] in ['climbing_types', 'grading_systems'] %}
+                        <a href="{{ url_for(lesson.next_lesson.split('/')[0], lesson_id=lesson.next_lesson.split('/')[-1]) }}" class="btn btn-primary">Next</a>
                     {% else %}
                         <a href="{{ url_for('climbing_types', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
                     {% endif %}

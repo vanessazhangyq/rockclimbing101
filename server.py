@@ -5,7 +5,6 @@ import re
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 
-
 lessons = {
     "1": {
         "lesson_id": "1",
@@ -334,13 +333,16 @@ def climbing_types(lesson_id):
         return redirect(url_for('home'))
 
     previous_lesson = lesson.get('previous_lesson')
-    previous_lesson_url = url_for('home') if previous_lesson == "home" else url_for('climbing_types', lesson_id=previous_lesson)
+    # Check if previous lesson is in safety session
+    if previous_lesson == "8":  # Assuming "8" is the last safety lesson ID
+        previous_lesson_url = url_for('safety', lesson_id=previous_lesson)
+    else:
+        previous_lesson_url = url_for('home') if previous_lesson == "home" else url_for('climbing_types', lesson_id=previous_lesson)
 
     next_lesson = lesson.get('next_lesson')
     next_lesson_url = url_for('climbing_types', lesson_id=next_lesson)
 
     return render_template('climbing_types.html', lesson=lesson, previous_lesson_url=previous_lesson_url, next_lesson_url=next_lesson_url)
-
 
 @app.route('/climbing_types/<lesson_id>/submit_quiz', methods=['POST'])
 def submit_climbing_quiz(lesson_id):
