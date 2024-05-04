@@ -387,9 +387,13 @@ def submit_grading_quiz(lesson_id):
     selected_option = request.form['quizAnswer']
     lesson = grading_systems_lessons.get(lesson_id, {})
     
-    # Check if the selected answer is correct 
+    # Check if the selected answer is correct
     is_correct = selected_option == lesson.get('correct_answer')
     
+    # Store the result in the session
+    session[f'quiz_{lesson_id}_completed'] = True
+    session[f'quiz_{lesson_id}_correct'] = is_correct
+
     if is_correct:
         flash('Correct answer!', 'success')
     else:

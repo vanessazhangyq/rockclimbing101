@@ -66,10 +66,19 @@
                 
                 {% if lesson.next_lesson %}
                     {% if lesson.next_lesson == "quiz/0" %}
+        <!-- Link to a quiz route if the next lesson points to a quiz -->
                         <a href="{{ url_for('quiz', quiz_num=0) }}" class="btn btn-primary">Next</a>
+                    {% elif lesson.lesson_id == '4' %}
+        <!-- Special handling for lesson 4 where quiz completion is required -->
+                        {% if session.get('quiz_4_completed', False) and session.get('quiz_4_correct', False) %}
+                            <a href="{{ url_for('grading_systems', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
                     {% else %}
-                        <a href="{{ url_for('grading_systems', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
+                            <button disabled class="btn btn-primary">Next</button>
                     {% endif %}
+                {% else %}
+        <!-- General case for all other lessons -->
+                <a href="{{ url_for('grading_systems', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">Next</a>
+                {% endif %}
                 {% else %}
                     <button disabled class="btn btn-primary">Next</button>
                 {% endif %}
