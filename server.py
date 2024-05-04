@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-from flask import Response, request, jsonify, redirect, url_for, flash
+from flask import Response, request, jsonify, redirect, url_for, flash, session
 import re
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
@@ -286,6 +286,10 @@ def submit_quiz(lesson_id):
     # Check if the selected answer is correct
     is_correct = selected_option == lesson.get('correct_answer')
     
+    # Store the result in the session
+    session[f'quiz_{lesson_id}_completed'] = True
+    session[f'quiz_{lesson_id}_correct'] = is_correct
+
     if is_correct:
         flash('Correct answer!', 'success')
     else:

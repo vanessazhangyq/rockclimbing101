@@ -78,11 +78,15 @@
                 {% else %}
                     <button disabled class="btn btn-secondary">Back</button>
                 {% endif %}
-            
-                {% if next_lesson_url %}
-                    <a href="{{ next_lesson_url }}" class="btn btn-primary">Next</a>
+                
+                {% if lesson.lesson_id == '6' %}
+                    {% if session.get('quiz_6_completed', False) and session.get('quiz_6_correct', False) %}
+                        <a href="{{ next_lesson_url }}" class="btn btn-primary">Next</a>
+                    {% else %}
+                        <button disabled class="btn btn-primary">Next</button>
+                    {% endif %}
                 {% else %}
-                    <button disabled class="btn btn-primary">Next</button>
+                    <a href="{{ next_lesson_url }}" class="btn btn-primary">Next</a>
                 {% endif %}
             </div>
         </div>
