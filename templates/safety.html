@@ -85,6 +85,12 @@
                     {% else %}
                         <button disabled class="btn btn-primary">Next</button>
                     {% endif %}
+                {% elif lesson.lesson_id == '7' %}
+                    {% if session.get('quiz_7_completed', False) and session.get('quiz_7_correct', False) %}
+                        <a href="{{ next_lesson_url }}" class="btn btn-primary">Next</a>
+                    {% else %}
+                        <button disabled class="btn btn-primary">Next</button>
+                    {% endif %}
                 {% else %}
                     <a href="{{ next_lesson_url }}" class="btn btn-primary">Next</a>
                 {% endif %}

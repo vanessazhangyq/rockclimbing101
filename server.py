@@ -306,17 +306,21 @@ def submit_drag_and_drop_quiz():
     lesson_id = '7'  # ID for the drag-and-drop quiz lesson
 
     # Check if the answers are correct
-
-    is_correct = step1_answer == 'drag-t-rex' and step2_answer == 'drag-turtle' and step3_answer == 'drag-roll'
+    is_correct = (step1_answer == 'drag-t-rex' and 
+                  step2_answer == 'drag-turtle' and 
+                  step3_answer == 'drag-roll')
     
-    # Set a message and possibly modify the lesson dictionary if needed
+    # Store the result in the session
+    session[f'quiz_{lesson_id}_completed'] = True
+    session[f'quiz_{lesson_id}_correct'] = is_correct
+
     if is_correct:
         flash('You got it right! Great job!', 'success')
     else:
         flash('Incorrect order. Try again.', 'danger')
 
-    # Re-render the safety.html with the current lesson data
     return redirect(url_for('safety', lesson_id=lesson_id))
+
 
 @app.route('/climbing_types')
 def climbing_types_index():
