@@ -352,9 +352,9 @@ def submit_climbing_quiz(lesson_id):
     # Check if the selected answer is correct
     is_correct = selected_option == lesson.get('correct_answer')
     
-    # Store the result in the session
-    session[f'quiz_{lesson_id}_completed'] = True
-    session[f'quiz_{lesson_id}_correct'] = is_correct
+    # Store the result in the session with a unique key for climbing types
+    session[f'climbing_quiz_{lesson_id}_completed'] = True
+    session[f'climbing_quiz_{lesson_id}_correct'] = is_correct
 
     if is_correct:
         flash('Correct answer!', 'success')
