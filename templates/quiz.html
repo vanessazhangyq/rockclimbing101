@@ -65,6 +65,7 @@
             {% endif %}
             
             <!-- Quiz Form -->
+            
             <div class="quiz-section text-center mt-4">
                 <form method="post" action="{{ url_for('quiz', quiz_num=data.next) }}">
                     {% if data.options|length > 0 %}
@@ -79,11 +80,20 @@
                         {% if data.quiz_num == "6" %}
                             <a href="/view_result" class="btn btn-primary">View Result</a>
                         {% else %}
-                            <button type="submit" class="btn btn-primary">Next</button>
+                            <button type="submit" class="btn btn-primary" id="next-button" {{ 'disabled' if data.quiz_num != '0' }}>Next</button>
                         {% endif %}
                     </div>
                 </form>
             </div>
+            <script>
+                if ("{{ data.quiz_num }}" !== '0') {
+                    document.querySelectorAll('input[type="radio"][name="answer"]').forEach(function(input) {
+                        input.addEventListener('change', function() {
+                            document.getElementById('next-button').disabled = false;
+                        });
+                    });
+                }
+            </script>
         </div>
     </div>
 </div>
