@@ -63,7 +63,7 @@
                     </form>
                 </div>
             {% endif %}
-            
+
             <!-- Navigation buttons -->
             <div class="navigation-buttons d-flex justify-content-between mt-4">
                 {% if lesson.previous_lesson %}
@@ -75,11 +75,11 @@
                 {% else %}
                     <button disabled class="btn btn-secondary">Back</button>
                 {% endif %}
-                <div style="flex-grow: 1;"></div> <!-- This empty div pushes the next button to the right -->
+                <div style="flex-grow: 1;"></div>
                 {% if lesson.next_lesson %}
                     {% if lesson.lesson_id == '6' %}
                         {% if session.get('climbing_quiz_6_completed', False) and session.get('climbing_quiz_6_correct', False) %}
-                        s<a href="{{ url_for('climbing_types', lesson_id=lesson.next_lesson) }}" class="btn  btn-primary">Next</a>
+                        <a href="{{ url_for('climbing_types', lesson_id=lesson.next_lesson) }}" class="btn  btn-primary">Next</a>
                         {% else %}
                             <button disabled class="btn btn-primary">Next</button>
                         {% endif %}
