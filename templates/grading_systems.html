@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
 <div class="grading-systems-lesson container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -29,7 +30,19 @@
             
             <!-- Display the lesson's text -->
             <div class="lesson-text mt-4 text-center">
-                <p>{{ lesson.text }}</p>
+                {% if lesson.lesson_id == "2" or lesson.lesson_id == "3" %}
+                    <div class="left-text">
+                        <ul style="text-align: left;">
+                            <li>Development Period: {{ lesson.text_dev }}</li>
+                            <li>Difficulty Range: {{ lesson.text_range }}</li>
+                            <li>Starting Level: {{ lesson.text_begin }}</li>
+                            <li>Scope: {{ lesson.text_scope }}</li>
+                            <li>Usage: {{ lesson.text_usage }}</li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <p>{{ lesson.text }}</p>
+                {% endif %}
             </div>
             
             <!-- Quiz Section if available -->
