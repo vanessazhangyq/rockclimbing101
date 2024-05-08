@@ -8,7 +8,7 @@ app.secret_key = 'your_secret_key_here'
 lessons = {
     "1": {
         "lesson_id": "1",
-        "title": "How to safety fall in bouldering",
+        "title": "How to safely fall in bouldering",
         "media": "http://valcursus.nl/media/posts/8/responsive/poster-md.png",
         "media_type": "vertical",
         "text":
